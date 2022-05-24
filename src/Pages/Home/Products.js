@@ -9,7 +9,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("products.json")
+        fetch("http://localhost:5000/products")
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -24,11 +24,11 @@ const Products = () => {
         <div>
             <div className="flex justify-between">
                 <h2>Top Hot Deals</h2>
-                <a class="link link-hover">I'm a simple link</a>
+                <a className="link link-hover">I'm a simple link</a>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-20">
                 {products.map((product) => (
-                    <Product key={product.id} product={product}></Product>
+                    <Product key={product._id} product={product}></Product>
                 ))}
             </div>
         </div>
