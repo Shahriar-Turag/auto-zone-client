@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Product = ({ product, children }) => {
     const { img, category, name, description, minOrder, availableQty, price } =
@@ -10,14 +11,18 @@ const Product = ({ product, children }) => {
                     <img src={img} alt="" className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
-                    <h4>{category.slice}</h4>
+                    <h4>{category}</h4>
                     <h2 className="card-title">{name.slice(0, 18)}...</h2>
                     <p>{description.slice(0, 90)}...</p>
                     <h6>Minimum Order: {minOrder}</h6>
                     <h6>Available Quantity: {availableQty}</h6>
                     <h6>Price: ${price}</h6>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <Link to={`/product/${product._id}`}>
+                            <button className="btn btn-primary">
+                                Purchase
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 {children}

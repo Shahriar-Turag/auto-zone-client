@@ -7,7 +7,7 @@ import bgBanner from "../../assets/images/banner-bg.jpg";
 const Banner = () => {
     return (
         <div
-            className="carousel w-full "
+            className="carousel w-full"
             style={{
                 background: `url(${bgBanner})`,
             }}
@@ -20,9 +20,7 @@ const Banner = () => {
                             Turbocharger <br />
                             Specialist
                         </h1>
-                        <button className="btn btn-secondary">
-                            Discover more
-                        </button>
+                        <button className="btn btn-base">Discover more</button>
                     </div>
                     <img src={banner1} alt="" />
                 </div>

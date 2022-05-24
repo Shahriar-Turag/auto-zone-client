@@ -34,6 +34,9 @@ const Navbar = () => {
                                 <Link to="/">Home</Link>
                             </li>
                             <li>
+                                <Link to="/shop">Shop</Link>
+                            </li>
+                            <li>
                                 <Link to="/about">About</Link>
                             </li>
                             <li>
@@ -43,12 +46,14 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-center">
-                    <a
+                    <Link
+                        to="/"
                         className=" normal-case text-3xl"
                         style={{ fontFamily: "acme" }}
                     >
+                        {" "}
                         Auto <span className="text-primary">Zone</span>
-                    </a>
+                    </Link>
                 </div>
                 <div className="navbar-end">
                     <button className="btn btn-ghost btn-circle">

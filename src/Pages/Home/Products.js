@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Product from "./Product";
 
 const Products = () => {
@@ -22,14 +22,41 @@ const Products = () => {
 
     return (
         <div>
-            <div className="flex justify-between">
-                <h2>Top Hot Deals</h2>
-                <a className="link link-hover">I'm a simple link</a>
-            </div>
+            {location.pathname === "/" ? (
+                <div className="flex justify-between p-20 flex-col lg:flex-row">
+                    <h2 className="text-4xl font-bold py-5 lg:py-0">
+                        Top Hot Deals
+                    </h2>
+                    <Link to="/shop" className="link link-primary ">
+                        SEE MORE
+                    </Link>
+                </div>
+            ) : (
+                <h2 className="text-4xl font-bold p-20">All Deals</h2>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-20">
-                {products.map((product) => (
-                    <Product key={product._id} product={product}></Product>
-                ))}
+                {location.pathname === "/" || location.pathname === "/home "
+                    ? products
+                          .slice(0, 4)
+                          .map((product) => (
+                              <Product
+                                  key={product._id}
+                                  product={product}
+                              ></Product>
+                          ))
+                    : location.pathname === "/shop"
+                    ? products.map((product) => (
+                          <Product
+                              key={product._id}
+                              product={product}
+                          ></Product>
+                      ))
+                    : products.map((product) => (
+                          <Product
+                              key={product._id}
+                              product={product}
+                          ></Product>
+                      ))}
             </div>
         </div>
     );
