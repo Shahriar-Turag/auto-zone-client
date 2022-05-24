@@ -3,6 +3,7 @@ import React from "react";
 import Banner from "./Banner";
 import Categories from "./Categories";
 import DoubleBanner from "./DoubleBanner";
+import FourthBanner from "./FourthBanner";
 import Info from "./Info";
 import Products from "./Products";
 import ThirdBanner from "./ThirdBanner";
@@ -16,6 +17,7 @@ const Home = () => {
             <DoubleBanner />
             <ThirdBanner />
             <Categories />
+            <FourthBanner />
         </div>
     );
 };

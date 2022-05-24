@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ct1 from "../../assets/images/ct1.png";
+import ct2 from "../../assets/images/ct2.png";
+import ct3 from "../../assets/images/ct3.png";
+import ct4 from "../../assets/images/ct4.png";
+import ct5 from "../../assets/images/ct5.png";
+import ct6 from "../../assets/images/ct6.png";
 
 const Categories = () => {
     return (
@@ -13,19 +18,109 @@ const Categories = () => {
                     SEE MORE
                 </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 bg-category">
-                <div class="card lg:card-side bg-base-100 shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
                     <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl">Tires</h2>
+                        <h2 class="card-title text-3xl text-white">Tires</h2>
 
                         <div class="card-actions">
-                            <button class="btn btn-primary">MORE</button>
+                            <button class="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 relative left-12"
+                            className="hover:-translate-x-12  w-[200px]"
                             src={ct1}
+                            alt="Album"
+                        />
+                    </figure>
+                </div>
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div class="card-body space-y-5">
+                        <h2 class="card-title text-3xl text-white">
+                            Service Kits
+                        </h2>
+
+                        <div class="card-actions">
+                            <button class="btn btn-base">MORE</button>
+                        </div>
+                    </div>
+                    <figure>
+                        <img
+                            className="hover:-translate-x-12 w-[150px]"
+                            src={ct2}
+                            alt="Album"
+                        />
+                    </figure>
+                </div>
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div class="card-body space-y-5">
+                        <h2 class="card-title text-3xl text-white">
+                            Steering Wheel
+                        </h2>
+
+                        <div class="card-actions">
+                            <button class="btn btn-base">MORE</button>
+                        </div>
+                    </div>
+                    <figure>
+                        <img
+                            className="hover:-translate-x-12 w-[150px]"
+                            src={ct3}
+                            alt="Album"
+                        />
+                    </figure>
+                </div>
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div class="card-body space-y-5">
+                        <h2 class="card-title text-3xl text-white">
+                            Brake Parts
+                        </h2>
+
+                        <div class="card-actions">
+                            <button class="btn btn-base">MORE</button>
+                        </div>
+                    </div>
+                    <figure>
+                        <img
+                            className="hover:-translate-x-12 w-[200px]"
+                            src={ct4}
+                            alt="Album"
+                        />
+                    </figure>
+                </div>
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div class="card-body space-y-5">
+                        <h2 class="card-title text-3xl text-white">
+                            Batteries
+                        </h2>
+
+                        <div class="card-actions">
+                            <button class="btn btn-base">MORE</button>
+                        </div>
+                    </div>
+                    <figure>
+                        <img
+                            className="hover:-translate-x-12 w-[200px]"
+                            src={ct5}
+                            alt="Album"
+                        />
+                    </figure>
+                </div>
+                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div class="card-body space-y-5">
+                        <h2 class="card-title text-3xl text-white">
+                            Oils and Fluids
+                        </h2>
+
+                        <div class="card-actions">
+                            <button class="btn btn-base">MORE</button>
+                        </div>
+                    </div>
+                    <figure>
+                        <img
+                            className="hover:-translate-x-12 w-[150px]"
+                            src={ct6}
                             alt="Album"
                         />
                     </figure>
