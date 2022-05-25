@@ -29,7 +29,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12  w-[200px]"
+                            className="hover:-translate-x-12  w-[200px] transition ease-in-out duration-300"
                             src={ct1}
                             alt="Album"
                         />
@@ -47,7 +47,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 w-[150px]"
+                            className="hover:-translate-x-12 w-[150px] transition ease-in-out duration-300"
                             src={ct2}
                             alt="Album"
                         />
@@ -65,7 +65,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 w-[150px]"
+                            className="hover:-translate-x-12 w-[150px] transition ease-in-out duration-300"
                             src={ct3}
                             alt="Album"
                         />
@@ -83,7 +83,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 w-[200px]"
+                            className="hover:-translate-x-12 w-[200px] transition ease-in-out duration-300"
                             src={ct4}
                             alt="Album"
                         />
@@ -101,7 +101,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 w-[200px]"
+                            className="hover:-translate-x-12 w-[200px] transition ease-in-out duration-300"
                             src={ct5}
                             alt="Album"
                         />
@@ -119,7 +119,7 @@ const Categories = () => {
                     </div>
                     <figure>
                         <img
-                            className="hover:-translate-x-12 w-[150px]"
+                            className="hover:-translate-x-12 w-[150px] transition ease-in-out duration-300"
                             src={ct6}
                             alt="Album"
                         />

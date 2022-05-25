@@ -17,7 +17,7 @@ const DoubleBanner = () => {
                 </div>
                 <figure>
                     <img
-                        className="hover:-translate-x-12 relative left-12 w-[250px]"
+                        className="hover:-translate-x-12 relative left-12 w-[250px] transition ease-in-out duration-300"
                         src={brake}
                         alt="Album"
                     />
@@ -35,7 +35,7 @@ const DoubleBanner = () => {
                 </div>
                 <figure>
                     <img
-                        className="hover:-translate-x-12 relative left-12 w-[250px]"
+                        className="hover:-translate-x-12 relative left-12 w-[250px] transition ease-in-out duration-300"
                         src={wheel}
                         alt="Album"
                     />

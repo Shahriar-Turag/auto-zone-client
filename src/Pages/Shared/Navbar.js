@@ -1,7 +1,20 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+    if (loading) {
+        return <Loading />;
+    }
+    const logout = () => {
+        signOut(auth);
+    };
+    console.log(user);
     return (
         <div>
             <div className="navbar  bg-secondary text-white px-20">
@@ -28,7 +41,7 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabIndex="0"
-                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-neutral"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black"
                         >
                             <li>
                                 <Link to="/">Home</Link>
@@ -39,8 +52,17 @@ const Navbar = () => {
                             <li>
                                 <Link to="/about">About</Link>
                             </li>
-                            <li>
-                                <Link to="/login">Login</Link>
+                            <li className="block lg:hidden">
+                                {user ? (
+                                    <button
+                                        class="btn btn-link"
+                                        onClick={logout}
+                                    >
+                                        Sign Out
+                                    </button>
+                                ) : (
+                                    <Link to="/login">Login</Link>
+                                )}
                             </li>
                         </ul>
                     </div>
@@ -72,25 +94,27 @@ const Navbar = () => {
                             />
                         </svg>
                     </button>
-                    <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                />
-                            </svg>
-                            <span className="badge badge-xs badge-primary indicator-item"></span>
-                        </div>
-                    </button>
+
+                    <ul className="hidden lg:block ">
+                        <li>
+                            {user ? (
+                                <button class="btn btn-link" onClick={logout}>
+                                    Sign Out
+                                </button>
+                            ) : (
+                                <Link to="/login">Login</Link>
+                            )}
+                        </li>
+                    </ul>
+                    <div class="avatar online ml-4">
+                        {user ? (
+                            <div class="w-10 rounded-full ">
+                                <img src={user.photoURL} alt="" />
+                            </div>
+                        ) : (
+                            <p className="hidden lg:hidden"></p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

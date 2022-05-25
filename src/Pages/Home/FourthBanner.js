@@ -16,7 +16,7 @@ const FourthBanner = () => {
                 </div>
                 <figure>
                     <img
-                        className="w-[700px] hover:-translate-x-20"
+                        className="w-[700px] hover:-translate-x-20 transition ease-in-out duration-300"
                         src={wheel2}
                         alt="Album"
                     />
