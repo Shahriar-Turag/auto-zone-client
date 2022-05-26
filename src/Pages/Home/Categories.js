@@ -19,12 +19,14 @@ const Categories = () => {
                 </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">Tires</h2>
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
+                            Tires
+                        </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
@@ -35,14 +37,14 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
                             Service Kits
                         </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
@@ -53,14 +55,14 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
                             Steering Wheel
                         </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
@@ -71,14 +73,14 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
                             Brake Parts
                         </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
@@ -89,14 +91,14 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
                             Batteries
                         </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>
@@ -107,14 +109,14 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div class="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
-                    <div class="card-body space-y-5">
-                        <h2 class="card-title text-3xl text-white">
+                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                    <div className="card-body space-y-5">
+                        <h2 className="card-title text-3xl text-white">
                             Oils and Fluids
                         </h2>
 
-                        <div class="card-actions">
-                            <button class="btn btn-base">MORE</button>
+                        <div className="card-actions">
+                            <button className="btn btn-base">MORE</button>
                         </div>
                     </div>
                     <figure>

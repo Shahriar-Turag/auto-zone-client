@@ -6,13 +6,13 @@ import wheel from "../../assets/images/wheel.png";
 const DoubleBanner = () => {
     return (
         <div className="flex justify-evenly p-20 gap-8 flex-col md:flex-row lg:flex-row">
-            <div class="card lg:card-side bg-base-100 shadow-xl bg-neutral">
-                <div class="card-body">
-                    <h2 class="card-title font-bold ">Engine Auto Part</h2>
+            <div className="card lg:card-side bg-base-100 shadow-xl bg-neutral">
+                <div className="card-body">
+                    <h2 className="card-title font-bold ">Engine Auto Part</h2>
                     <p>Engineered for your best workout yet</p>
 
                     <Link to="/shop">
-                        <button class="btn btn-primary">SHOP NOW</button>
+                        <button className="btn btn-primary">SHOP NOW</button>
                     </Link>
                 </div>
                 <figure>
@@ -23,14 +23,14 @@ const DoubleBanner = () => {
                     />
                 </figure>
             </div>
-            <div class="card lg:card-side bg-base-100 shadow-xl bg-accent">
-                <div class="card-body">
-                    <h2 class="card-title font-bold ">
+            <div className="card lg:card-side bg-base-100 shadow-xl bg-accent">
+                <div className="card-body">
+                    <h2 className="card-title font-bold ">
                         Likelife Audio & Secure Fit
                     </h2>
                     <p>Engineered for your best workout yet</p>
                     <Link to="/shop">
-                        <button class="btn btn-base">SHOP NOW</button>
+                        <button className="btn btn-base">SHOP NOW</button>
                     </Link>
                 </div>
                 <figure>
