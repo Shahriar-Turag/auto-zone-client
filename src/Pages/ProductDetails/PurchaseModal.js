@@ -1,20 +1,26 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 
 import auth from "../../firebase.init";
 
-const PurchaseModal = () => {
-    const [product] = useState({});
+const PurchaseModal = ({ product }) => {
     const quantityRef = useRef();
     const [user] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
+    const [price, setPrice] = useState(`${parseInt(product.price) * 50}`);
 
     const onSubmit = (data) => {
+        data.img = product.img;
+        data.productName = product.name;
         data.email = user?.email;
+        data.quantity = quantityRef.current.value;
+        data.price = parseInt(product.price * quantityRef.current.value);
+        data.category = product.category;
+        data.details = product.description;
 
-        axios.post("http://localhost:5000/products", data).then((res) => {
+        axios.post("http://localhost:5000/orders", data).then((res) => {
             if (res.data.insertedId) {
                 alert("Product added to my order");
                 reset();
@@ -22,10 +28,15 @@ const PurchaseModal = () => {
         });
     };
 
+    useEffect(() => {
+        const quantity = quantityRef.current?.value;
+        setPrice(`${parseInt(product.price) * quantity}`);
+    }, [quantityRef.current?.value, product.price]);
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="card-actions justify-end">
-                <label for="my-modal-6" className="btn btn-primary">
+                <label htmlFor="my-modal-6" className="btn btn-primary">
                     purchase
                 </label>
 
@@ -79,8 +90,22 @@ const PurchaseModal = () => {
                                 type="number"
                                 placeholder="Quantity"
                                 className="input input-bordered input-warning w-full "
+                                max={product.availableQty}
                                 min={50}
                                 defaultValue={50}
+                            />
+                        </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input
+                                {...register("price")}
+                                type="number"
+                                placeholder="Price"
+                                value={price}
+                                className="input input-bordered input-warning w-full "
+                                disabled
                             />
                         </div>
 
@@ -108,7 +133,7 @@ const PurchaseModal = () => {
                         </div>
                         <div className="modal-action justify-evenly">
                             <label
-                                for="my-modal-6"
+                                htmlFor="my-modal-6"
                                 className="btn btn-sm btn-circle absolute right-2 top-2"
                             >
                                 ✕

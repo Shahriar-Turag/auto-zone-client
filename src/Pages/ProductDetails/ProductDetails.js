@@ -45,7 +45,8 @@ const ProductDetails = () => {
                 <p>
                     <span className="font-bold">Price:</span> ${product.price}
                 </p>
-                <PurchaseModal />
+
+                <PurchaseModal product={product} />
             </div>
         </div>
     );

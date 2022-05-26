@@ -8,8 +8,10 @@ import Navbar from "./Pages/Shared/Navbar";
 import SignUp from "./Pages/Account/SignUp";
 import RequireAuth from "./Pages/Account/RequireAuth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import MyOrder from "./Pages/Dashboard/MyOrder";
+
 import AddReview from "./Pages/Dashboard/AddReview";
+import OrderTable from "./Pages/Dashboard/OrderTable";
+import MyOrders from "./Pages/Dashboard/MyOrders";
 
 function App() {
     return (
@@ -33,8 +35,9 @@ function App() {
                         </RequireAuth>
                     }
                 >
-                    <Route index element={<MyOrder />}></Route>
+                    <Route index element={<OrderTable />}></Route>
                     <Route path="review" element={<AddReview />}></Route>
+                    <Route path="myOrders" element={<MyOrders />}></Route>
                 </Route>
                 <Route path="/shop" element={<Products />}></Route>
                 <Route path="/login" element={<Login />}></Route>

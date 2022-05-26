@@ -9,6 +9,7 @@ import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
 import { Link, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] =
@@ -16,6 +17,8 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || gUser);
     const navigate = useNavigate();
     const {
         register,
@@ -24,12 +27,6 @@ const SignUp = () => {
     } = useForm();
 
     let signInError;
-
-    const onSubmit = async (data) => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
-        navigate("/");
-    };
 
     if (loading || gLoading || updating) {
         return <Loading />;
@@ -45,9 +42,14 @@ const SignUp = () => {
         );
     }
 
-    if (user || gUser) {
-        console.log(user || gUser);
+    if (token) {
+        navigate("/");
     }
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+    };
+
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="card w-96 bg-base-100 shadow-xl">

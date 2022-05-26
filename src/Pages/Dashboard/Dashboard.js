@@ -15,10 +15,10 @@ const Dashboard = () => {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard">Sidebar Item 1</Link>
+                        <Link to="/dashboard">Order List</Link>
                     </li>
                     <li>
-                        <Link to="/myorder">My Order</Link>
+                        <Link to="/dashboard/myOrders">My Order</Link>
                     </li>
                     <li>
                         <Link to="/dashboard/review">Sidebar Item 2</Link>
