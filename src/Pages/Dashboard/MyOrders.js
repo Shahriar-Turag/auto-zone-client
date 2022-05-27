@@ -23,12 +23,12 @@ const MyOrders = () => {
                 },
             })
                 .then((res) => {
-                    // console.log("res", res);
-                    // if (res.status === 401 || res.status === 403) {
-                    //     signOut(auth);
-                    //     localStorage.removeItem("accessToken");
-                    //     Navigate("/");
-                    // }
+                    console.log("res", res);
+                    if (res.status === 401 || res.status === 403) {
+                        signOut(auth);
+                        localStorage.removeItem("accessToken");
+                        Navigate("/");
+                    }
                     return res.json();
                 })
                 .then((data) => {

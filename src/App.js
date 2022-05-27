@@ -13,6 +13,8 @@ import AddReview from "./Pages/Dashboard/AddReview";
 import OrderTable from "./Pages/Dashboard/OrderTable";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import Users from "./Pages/Dashboard/Users";
+import { ToastContainer } from "react-toastify";
+import RequireAdmin from "./Pages/Account/RequireAdmin";
 
 function App() {
     return (
@@ -39,12 +41,20 @@ function App() {
                     <Route index element={<OrderTable />}></Route>
                     <Route path="review" element={<AddReview />}></Route>
                     <Route path="myOrders" element={<MyOrders />}></Route>
-                    <Route path="users" element={<Users />}></Route>
+                    <Route
+                        path="users"
+                        element={
+                            <RequireAdmin>
+                                <Users />
+                            </RequireAdmin>
+                        }
+                    ></Route>
                 </Route>
                 <Route path="/shop" element={<Products />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
             </Routes>
+            <ToastContainer />
         </div>
     );
 }

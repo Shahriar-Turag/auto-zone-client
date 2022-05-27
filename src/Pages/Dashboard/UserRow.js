@@ -1,6 +1,8 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
 
-const UserRow = ({ user }) => {
+const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
@@ -10,16 +12,26 @@ const UserRow = ({ user }) => {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 403) {
+                    toast("You are not authorized to do this", {
+                        type: "error",
+                    });
+                }
+                return res.json();
+            })
             .then((data) => {
-                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast("Successfully made an admin", { type: "success" });
+                }
             });
     };
     return (
         <tr>
             <th>1</th>
             <td>{email}</td>
-            {/* <td>
+            <td>
                 {role !== "admin" && (
                     <button
                         onClick={makeAdmin}
@@ -28,8 +40,8 @@ const UserRow = ({ user }) => {
                         Make Admin
                     </button>
                 )}
-            </td> */}
-            <td>
+            </td>
+            {/* <td>
                 {role !== "admin" && (
                     <label
                         onClick={makeAdmin}
@@ -58,7 +70,7 @@ const UserRow = ({ user }) => {
                         </div>
                     </div>
                 </div>
-            </td>
+            </td> */}
             <td>
                 <button class="btn btn-outline btn-sm btn-error">
                     Remove User
