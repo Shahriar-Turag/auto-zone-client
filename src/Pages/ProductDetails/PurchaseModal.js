@@ -11,7 +11,8 @@ const PurchaseModal = ({ product }) => {
     const { register, handleSubmit, reset } = useForm();
     const [price, setPrice] = useState(`${parseInt(product.price) * 50}`);
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, event) => {
+        event.preventDefault();
         data.img = product.img;
         data.productName = product.name;
         data.email = user?.email;

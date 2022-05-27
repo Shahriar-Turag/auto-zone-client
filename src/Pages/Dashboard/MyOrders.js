@@ -1,5 +1,7 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Navigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import OrderCard from "../OrderCard/OrderCard";
 
@@ -11,23 +13,32 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
 
     useEffect(() => {
-        const author = { author: user.email };
-
-        fetch("http://localhost:5000/myOrders", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(author),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data[0]) {
-                    setMyOrders(data);
-                    console.log(data);
-                }
-            });
-    }, [user.email]);
+        if (user) {
+            fetch(`http://localhost:5000/orders?email=${user.email}`, {
+                method: "GET",
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
+            })
+                .then((res) => {
+                    // console.log("res", res);
+                    // if (res.status === 401 || res.status === 403) {
+                    //     signOut(auth);
+                    //     localStorage.removeItem("accessToken");
+                    //     Navigate("/");
+                    // }
+                    return res.json();
+                })
+                .then((data) => {
+                    if (data) {
+                        setMyOrders(data);
+                        console.log(data);
+                    }
+                });
+        }
+    }, [user]);
 
     const handleDelete = (id) => {
         const warning = window.confirm(

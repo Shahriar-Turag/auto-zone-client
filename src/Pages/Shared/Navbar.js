@@ -15,6 +15,7 @@ const Navbar = () => {
     }
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem("accessToken");
     };
     console.log(user);
     return (
