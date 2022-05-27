@@ -21,12 +21,14 @@ const PurchaseModal = ({ product }) => {
         data.category = product.category;
         data.details = product.description;
 
-        axios.post("http://localhost:5000/orders", data).then((res) => {
-            if (res.data.insertedId) {
-                alert("Product added to my order");
-                reset();
-            }
-        });
+        axios
+            .post("https://limitless-thicket-02169.herokuapp.com/orders", data)
+            .then((res) => {
+                if (res.data.insertedId) {
+                    alert("Product added to my order");
+                    reset();
+                }
+            });
     };
 
     useEffect(() => {
