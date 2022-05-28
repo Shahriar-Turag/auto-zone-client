@@ -18,6 +18,7 @@ import RequireAdmin from "./Pages/Account/RequireAdmin";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Payment from "./Pages/Dashboard/Payment";
+import Footer from "./Pages/Shared/Footer";
 
 function App() {
     return (
@@ -74,6 +75,7 @@ function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
             </Routes>
+            <Footer />
             <ToastContainer></ToastContainer>;
         </div>
     );

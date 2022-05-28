@@ -14,7 +14,7 @@ const Payment = () => {
     const { id } = useParams();
     const url = `http://localhost:5000/orders/${id}`;
 
-    const { data: product, isLoading } = useQuery(["orders, id"], () =>
+    const { data: product, isLoading } = useQuery(["orders", id], () =>
         fetch(url, {
             method: "GET",
             headers: {

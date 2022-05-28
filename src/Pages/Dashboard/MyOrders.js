@@ -69,13 +69,13 @@ const MyOrders = () => {
                 <OrderCard key={order._id} product={order}>
                     <button
                         onClick={() => handleDelete(order._id)}
-                        className="btn btn-error text-white"
+                        className="btn btn-error text-white mt-10"
                     >
                         Cancel order
                     </button>
                     {order.price && !order.paid && (
                         <Link to={`/dashboard/payment/${order._id}`}>
-                            <button className="btn btn-primary text-white">
+                            <button className="btn btn-primary text-white mt-10 mx-3">
                                 Payment
                             </button>
                         </Link>
