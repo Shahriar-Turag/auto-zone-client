@@ -9,7 +9,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://limitless-thicket-02169.herokuapp.com/products")
+        fetch("http://localhost:5000/products")
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);

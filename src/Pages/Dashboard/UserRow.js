@@ -6,17 +6,12 @@ const UserRow = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(
-            `https://limitless-thicket-02169.herokuapp.com/user/admin/${email}`,
-            {
-                method: "PUT",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            }
-        )
+        fetch(`http://localhost:5000/user/admin/${email}`, {
+            method: "PUT",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
             .then((res) => {
                 if (res.status === 403) {
                     toast("You are not authorized to do this", {
@@ -40,7 +35,7 @@ const UserRow = ({ user, refetch, index }) => {
                 {role !== "admin" && (
                     <button
                         onClick={makeAdmin}
-                        class="btn btn-outline btn-sm btn-success"
+                        className="btn btn-outline btn-sm btn-success"
                     >
                         Make Admin
                     </button>
@@ -51,25 +46,25 @@ const UserRow = ({ user, refetch, index }) => {
                     <label
                         onClick={makeAdmin}
                         for="my-modal-6"
-                        class="btn modal-button"
+                        className="btn modal-button"
                     >
                         Make Admin
                     </label>
                 )}
 
-                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                <input type="checkbox" id="my-modal-6" className="modal-toggle" />
 
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">
                             Congratulations random Interner user!
                         </h3>
-                        <p class="py-4">
+                        <p className="py-4">
                             You've been selected for a chance to get one year of
                             subscription to use Wikipedia for free!
                         </p>
-                        <div class="modal-action">
-                            <label for="my-modal-6" class="btn">
+                        <div className="modal-action">
+                            <label for="my-modal-6" className="btn">
                                 Yay!
                             </label>
                         </div>
@@ -77,7 +72,7 @@ const UserRow = ({ user, refetch, index }) => {
                 </div>
             </td> */}
             <td>
-                <button class="btn btn-outline btn-sm btn-error">
+                <button className="btn btn-outline btn-sm btn-error">
                     Remove User
                 </button>
             </td>

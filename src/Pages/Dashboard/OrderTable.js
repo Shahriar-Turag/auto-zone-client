@@ -6,21 +6,17 @@ import auth from "../../firebase.init";
 const OrderTable = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [user] = useAuthState(auth);
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
-            fetch(
-                `https://limitless-thicket-02169.herokuapp.com/orders?email=${user.email}`,
-                {
-                    method: "GET",
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem(
-                            "accessToken"
-                        )}`,
-                    },
-                }
-            )
+            fetch(`http://localhost:5000/orders?email=${user.email}`, {
+                method: "GET",
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
+            })
                 .then((res) => {
                     console.log("res", res);
                     return res.json();
@@ -32,7 +28,7 @@ const OrderTable = () => {
                     }
                 });
         }
-    }, [user.email]);
+    }, [user]);
 
     return (
         <div>
@@ -40,8 +36,8 @@ const OrderTable = () => {
                 <h2 className="font-bold text-2xl py-5">
                     My Orders: {myOrders.length}
                 </h2>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -54,7 +50,7 @@ const OrderTable = () => {
                         </thead>
                         <tbody>
                             {myOrders.map((order, index) => (
-                                <tr>
+                                <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>{order.name}</td>
                                     <td>{order.productName}</td>

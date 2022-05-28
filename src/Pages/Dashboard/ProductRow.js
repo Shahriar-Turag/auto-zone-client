@@ -21,9 +21,9 @@ const ProductRow = ({ product, index, refetch }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                             <img
                                 src={img}
                                 alt="Avatar Tailwind CSS Component"
@@ -35,28 +35,32 @@ const ProductRow = ({ product, index, refetch }) => {
             <td>
                 {name.slice(0, 20)}
                 <br />
-                <span class="badge badge-ghost badge-sm">{category}</span>
+                <span className="badge badge-ghost badge-sm">{category}</span>
             </td>
 
             <td>{availableQty}</td>
             <td>{price}</td>
             <th>
-                <label for="my-modal-6" class="btn modal-button">
+                <label for="my-modal-6" className="btn modal-button">
                     open modal
                 </label>
 
-                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">
+                <input
+                    type="checkbox"
+                    id="my-modal-6"
+                    className="modal-toggle"
+                />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">
                             Congratulations random Interner user!
                         </h3>
-                        <p class="py-4">
+                        <p className="py-4">
                             You've been selected for a chance to get one year of
                             subscription to use Wikipedia for free!
                         </p>
-                        <div class="modal-action">
-                            <label for="my-modal-6" class="btn">
+                        <div className="modal-action">
+                            <label for="my-modal-6" className="btn">
                                 Yay!
                             </label>
                         </div>
@@ -64,14 +68,14 @@ const ProductRow = ({ product, index, refetch }) => {
                 </div>
                 {/* <button
                     onClick={() => handleDelete(product._id)}
-                    class="btn btn-ghost btn-xs"
+                    className="btn btn-ghost btn-xs"
                 >
                     Delete
                 </button> */}
 
                 <label
                     for={`id${product._id}`}
-                    class="btn btn-xs modal-button bg-error text-white "
+                    className="btn btn-xs modal-button bg-error text-white "
                 >
                     Delete
                 </label>
@@ -79,19 +83,19 @@ const ProductRow = ({ product, index, refetch }) => {
                 <input
                     type="checkbox"
                     id={`id${product._id}`}
-                    class="modal-toggle"
+                    className="modal-toggle"
                 />
-                <div class="modal">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg">
+                <div className="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">
                             Are you sure you want to delete this {product.name}
                         </h3>
 
-                        <div class="modal-action">
+                        <div className="modal-action">
                             <label
                                 onClick={() => handleDelete(product._id)}
                                 for={`id${product._id}`}
-                                class="btn"
+                                className="btn"
                             >
                                 Yes
                             </label>

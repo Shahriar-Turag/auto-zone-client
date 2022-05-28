@@ -58,9 +58,9 @@ const AddProduct = () => {
     };
 
     return (
-        <div class="card w-96 bg-gray-100 shadow-xl text-primary-content">
-            <div class="card-body">
-                <h2 class="card-title">Add a Product</h2>
+        <div className="card w-96 bg-gray-100 shadow-xl text-primary-content">
+            <div className="card-body">
+                <h2 className="card-title">Add a Product</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -68,7 +68,7 @@ const AddProduct = () => {
                         </label>
                         <select
                             {...register("category")}
-                            class="select select-warning w-full max-w-xs"
+                            className="select select-warning w-full max-w-xs"
                         >
                             <option>BRAKES</option>
                             <option>REPLACEMENT PARTS</option>
