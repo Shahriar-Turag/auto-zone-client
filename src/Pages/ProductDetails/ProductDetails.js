@@ -7,6 +7,7 @@ const ProductDetails = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState("");
 
     useEffect(() => {
         setLoading(true);
@@ -16,6 +17,7 @@ const ProductDetails = () => {
             .then((res) => res.json())
             .then((data) => {
                 setProduct(data);
+                setQuantity(data.availableQty);
                 setLoading(false);
             });
     }, []);
@@ -42,13 +44,13 @@ const ProductDetails = () => {
                 </p>
                 <p>
                     <span className="font-bold">Available quantity:</span>
-                    {product.availableQty}
+                    {quantity}
                 </p>
                 <p>
                     <span className="font-bold">Price:</span> ${product.price}
                 </p>
 
-                <PurchaseModal product={product} />
+                <PurchaseModal update={setQuantity} product={product} />
             </div>
         </div>
     );

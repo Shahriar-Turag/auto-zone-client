@@ -2,7 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-const UserRow = ({ user, refetch }) => {
+const UserRow = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
@@ -34,7 +34,7 @@ const UserRow = ({ user, refetch }) => {
     };
     return (
         <tr>
-            <th>1</th>
+            <th>{index + 1}</th>
             <td>{email}</td>
             <td>
                 {role !== "admin" && (

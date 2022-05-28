@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import auth from "../../firebase.init";
 
-const PurchaseModal = ({ product }) => {
+const PurchaseModal = ({ product, update }) => {
     const quantityRef = useRef();
     const [user] = useAuthState(auth);
     const { register, handleSubmit, reset } = useForm();
@@ -27,8 +27,47 @@ const PurchaseModal = ({ product }) => {
                 if (res.data.insertedId) {
                     alert("Product added to my order");
                     reset();
+                    update(
+                        `${
+                            parseInt(product.availableQty) -
+                            quantityRef.current.value
+                        }`
+                    );
                 }
             });
+    };
+
+    const debounce = (func, wait) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    };
+
+    const handleNigga = () => {
+        if (quantityRef.current.value !== "") {
+            const validateQty = debounce(() => {
+                if (
+                    parseInt(quantityRef.current.value) <
+                    quantityRef.current.min
+                ) {
+                    quantityRef.current.value = quantityRef.current.min;
+                }
+                if (
+                    parseInt(quantityRef.current.value) >
+                    quantityRef.current.max
+                ) {
+                    quantityRef.current.value = quantityRef.current.max;
+                }
+                setPrice(
+                    `${parseInt(product.price) * quantityRef.current.value}`
+                );
+            }, 1500);
+            validateQty();
+        } else {
+            setPrice(`${parseInt(product.price) * quantityRef.current.value}`);
+        }
     };
 
     useEffect(() => {
@@ -96,6 +135,7 @@ const PurchaseModal = ({ product }) => {
                                 max={product.availableQty}
                                 min={50}
                                 defaultValue={50}
+                                onChange={handleNigga}
                             />
                         </div>
                         <div>

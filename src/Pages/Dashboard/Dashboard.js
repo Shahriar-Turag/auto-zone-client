@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+
 import auth from "../../firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 
@@ -29,9 +30,21 @@ const Dashboard = () => {
                         <Link to="/dashboard/review">Sidebar Item 2</Link>
                     </li>
                     {admin && (
-                        <li>
-                            <Link to="/dashboard/users">All Users</Link>
-                        </li>
+                        <>
+                            <li>
+                                <Link to="/dashboard/users">All Users</Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/addProduct">
+                                    Add Product
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/manage">
+                                    Manage Products
+                                </Link>
+                            </li>
+                        </>
                     )}
                 </ul>
             </div>

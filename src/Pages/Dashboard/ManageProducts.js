@@ -1,16 +1,15 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
-import UserRow from "./UserRow";
+import ProductRow from "./ProductRow";
 
-const Users = () => {
+const ManageProducts = () => {
     const {
-        data: users,
+        data: products,
         isLoading,
         refetch,
-    } = useQuery("users", () =>
-        fetch("https://limitless-thicket-02169.herokuapp.com/user", {
-            method: "GET",
+    } = useQuery("doctors", () =>
+        fetch("http://localhost:5000/products", {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
@@ -21,25 +20,26 @@ const Users = () => {
     }
     return (
         <div>
-            <h2 className="text-2xl">All users: {users.length}</h2>
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto w-full">
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>No.</th>
+                            <th>Image</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Quantity</th>
+                            <th>Price per unit</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, index) => (
-                            <UserRow
-                                key={user._id}
-                                user={user}
-                                refetch={refetch}
+                        {products.map((product, index) => (
+                            <ProductRow
+                                key={product._id}
+                                product={product}
                                 index={index}
-                            ></UserRow>
+                                refetch={refetch}
+                            ></ProductRow>
                         ))}
                     </tbody>
                 </table>
@@ -48,4 +48,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default ManageProducts;
