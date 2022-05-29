@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <div>
             <div className="navbar  bg-secondary text-white px-10">
-                {location.pathname === "/dashboard" ? (
+                {location.pathname.includes("/dashboard") ? (
                     <div className=" navbar-start  block lg:hidden">
                         <label
                             for="my-drawer-2"
@@ -129,7 +129,13 @@ const Navbar = () => {
                             )}
                         </li>
                     </ul>
-                    <div className="avatar online ml-4 hidden lg:block">
+                    <div
+                        className={
+                            user
+                                ? "avatar online ml-4 hidden lg:block"
+                                : "avatar online ml-4 hidden"
+                        }
+                    >
                         {user ? (
                             <div className="w-10 rounded-full ">
                                 <img src={user?.photoURL} alt="" />

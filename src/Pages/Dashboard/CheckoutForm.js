@@ -9,18 +9,24 @@ const CheckoutForm = ({ product }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
     const [clientSecret, setClientSecret] = useState("");
+    const [status, setStatus] = useState("");
 
     const { _id, price, email, name } = product;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify({ price }),
-        })
+        fetch(
+            "https://limitless-thicket-02169.herokuapp.com/create-payment-intent",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem(
+                        "accessToken"
+                    )}`,
+                },
+                body: JSON.stringify({ price }),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data?.clientSecret) {
@@ -64,6 +70,7 @@ const CheckoutForm = ({ product }) => {
         } else {
             setCardError("");
             setTransactionId(paymentIntent.id);
+            setStatus(paymentIntent.status);
             console.log(paymentIntent);
             setSuccess("Payment Successful");
 
@@ -71,18 +78,22 @@ const CheckoutForm = ({ product }) => {
             const payment = {
                 product: _id,
                 transactionId: paymentIntent.id,
+                status: paymentIntent.status,
             };
 
-            fetch(`http://localhost:5000/orders/${_id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-                body: JSON.stringify({ payment }),
-            })
+            fetch(
+                `https://limitless-thicket-02169.herokuapp.com/orders/${_id}`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                    body: JSON.stringify({ payment }),
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     setProcessing(false);

@@ -5,12 +5,14 @@ import { useForm } from "react-hook-form";
 const AddReview = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
-        axios.post("http://localhost:5000/reviews", data).then((res) => {
-            if (res.data.insertedId) {
-                alert("Review Added Successfully...!");
-                reset();
-            }
-        });
+        axios
+            .post("https://limitless-thicket-02169.herokuapp.com/reviews", data)
+            .then((res) => {
+                if (res.data.insertedId) {
+                    alert("Review Added Successfully...!");
+                    reset();
+                }
+            });
     };
     return (
         <div>

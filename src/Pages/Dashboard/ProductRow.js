@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
 const ProductRow = ({ product, index, refetch }) => {
-    const { img, name, category, availableQty, price, id } = product;
+    const { img, name, category, availableQty, price } = product;
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://limitless-thicket-02169.herokuapp.com/products/${id}`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 if (data.deletedCount) {
-                    toast.success(`${name} deleted successfully`);
                     refetch();
                 }
             });

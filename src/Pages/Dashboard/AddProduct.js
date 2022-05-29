@@ -36,13 +36,17 @@ const AddProduct = () => {
                         img: img,
                     };
                     axios
-                        .post("http://localhost:5000/products", product, {
-                            headers: {
-                                authorization: `Bearer ${localStorage.getItem(
-                                    "accessToken"
-                                )}`,
-                            },
-                        })
+                        .post(
+                            "https://limitless-thicket-02169.herokuapp.com/products",
+                            product,
+                            {
+                                headers: {
+                                    authorization: `Bearer ${localStorage.getItem(
+                                        "accessToken"
+                                    )}`,
+                                },
+                            }
+                        )
                         .then((res) => {
                             if (res.data.insertedId) {
                                 alert("Product added successfully");

@@ -14,14 +14,17 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders?email=${user.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
+            fetch(
+                `https://limitless-thicket-02169.herokuapp.com/orders?email=${user.email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            )
                 .then((res) => {
                     console.log("res", res);
                     if (res.status === 401 || res.status === 403) {
@@ -34,7 +37,6 @@ const MyOrders = () => {
                 .then((data) => {
                     if (data) {
                         setMyOrders(data);
-                        console.log(data);
                     }
                 });
         }
@@ -45,7 +47,7 @@ const MyOrders = () => {
             "Are you sure\nYou want to delete this order..!?"
         );
         if (warning) {
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://limitless-thicket-02169.herokuapp.com/orders/${id}`;
             fetch(url, { method: "DELETE" })
                 .then((res) => res.json())
                 .then((data) => {
@@ -67,12 +69,16 @@ const MyOrders = () => {
             <h1>my order</h1>
             {myOrders.map((order) => (
                 <OrderCard key={order._id} product={order}>
-                    <button
-                        onClick={() => handleDelete(order._id)}
-                        className="btn btn-error text-white mt-10"
-                    >
-                        Cancel order
-                    </button>
+                    {order.paid ? (
+                        ""
+                    ) : (
+                        <button
+                            onClick={() => handleDelete(order._id)}
+                            className="btn btn-error text-white mt-10"
+                        >
+                            Cancel order
+                        </button>
+                    )}
                     {order.price && !order.paid && (
                         <Link to={`/dashboard/payment/${order._id}`}>
                             <button className="btn btn-primary text-white mt-10 mx-3">
@@ -81,7 +87,9 @@ const MyOrders = () => {
                         </Link>
                     )}
                     {order.price && order.paid && (
-                        <p className="text-accent font-bold">Paid</p>
+                        <button className="btn btn-active btn-ghost disabled">
+                            Paid
+                        </button>
                     )}
                 </OrderCard>
             ))}

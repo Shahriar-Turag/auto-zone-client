@@ -14,7 +14,7 @@ const ThirdBanner = () => {
         >
             <div className="flex justify-between items-center flex-col lg:flex-row py-10">
                 <div className="text-white space-y-5">
-                    <h1 className="text-5xl">
+                    <h1 className="lg:text-5xl text-2xl">
                         Keep Your Vehicle in Great Condition with Top Auto Parts
                     </h1>
                     <p>Engineered for your best workout yet</p>

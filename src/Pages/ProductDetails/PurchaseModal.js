@@ -20,19 +20,22 @@ const PurchaseModal = ({ product, update }) => {
         data.price = parseInt(product.price * quantityRef.current.value);
         data.category = product.category;
         data.details = product.description;
+        data.status = "Pending";
 
-        axios.post("http://localhost:5000/orders", data).then((res) => {
-            if (res.data.insertedId) {
-                alert("Product added to my order");
-                reset();
-                update(
-                    `${
-                        parseInt(product.availableQty) -
-                        quantityRef.current.value
-                    }`
-                );
-            }
-        });
+        axios
+            .post("https://limitless-thicket-02169.herokuapp.com/orders", data)
+            .then((res) => {
+                if (res.data.insertedId) {
+                    alert("Product added to my order");
+                    reset();
+                    update(
+                        `${
+                            parseInt(product.availableQty) -
+                            quantityRef.current.value
+                        }`
+                    );
+                }
+            });
     };
 
     const debounce = (func, wait) => {
@@ -43,7 +46,7 @@ const PurchaseModal = ({ product, update }) => {
         };
     };
 
-    const handleNigga = () => {
+    const handleQty = () => {
         if (quantityRef.current.value !== "") {
             const validateQty = debounce(() => {
                 if (
@@ -133,7 +136,7 @@ const PurchaseModal = ({ product, update }) => {
                                 max={product.availableQty}
                                 min={50}
                                 defaultValue={50}
-                                onChange={handleNigga}
+                                onChange={handleQty}
                             />
                         </div>
                         <div>

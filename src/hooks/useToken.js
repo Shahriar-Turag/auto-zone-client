@@ -7,13 +7,16 @@ const useToken = (user) => {
         const email = user?.user?.email;
         const currentUser = { email: email };
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(currentUser),
-            })
+            fetch(
+                `https://limitless-thicket-02169.herokuapp.com/user/${email}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(currentUser),
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     console.log("data inside useToken", data);

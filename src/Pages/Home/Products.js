@@ -9,7 +9,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/products")
+        fetch("https://limitless-thicket-02169.herokuapp.com/products")
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -23,8 +23,8 @@ const Products = () => {
     return (
         <div>
             {location.pathname === "/" ? (
-                <div className="flex justify-between p-20 flex-col lg:flex-row">
-                    <h2 className="text-4xl font-bold py-5 lg:py-0">
+                <div className="flex justify-between py-20 flex-col lg:flex-row px-20">
+                    <h2 className="text-4xl font-bold py-5 lg:py-0 ">
                         Top Hot Deals
                     </h2>
                     <Link to="/shop" className="link link-primary ">
@@ -32,9 +32,11 @@ const Products = () => {
                     </Link>
                 </div>
             ) : (
-                <h2 className="text-4xl font-bold p-20">All Deals</h2>
+                <h2 className="text-2xl lg:text-4xl font-bold p-10">
+                    All Deals
+                </h2>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-10 lg:px-20">
                 {location.pathname === "/" || location.pathname === "/home "
                     ? products
                           .slice(0, 4)

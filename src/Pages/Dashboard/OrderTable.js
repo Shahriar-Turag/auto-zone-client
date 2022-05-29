@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const OrderTable = () => {
@@ -9,14 +9,17 @@ const OrderTable = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders?email=${user.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
+            fetch(
+                `https://limitless-thicket-02169.herokuapp.com/orders?email=${user.email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            )
                 .then((res) => {
                     console.log("res", res);
                     return res.json();
@@ -45,6 +48,7 @@ const OrderTable = () => {
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Payment</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -53,9 +57,40 @@ const OrderTable = () => {
                                 <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>{order.name}</td>
-                                    <td>{order.productName}</td>
+                                    <td>{order.productName.slice(0, 20)}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
+
+                                    <td>
+                                        {order.price && !order.paid && (
+                                            <Link to={`/dashboard/myOrders`}>
+                                                <button className="btn btn-xs btn-success">
+                                                    Pay Now
+                                                </button>
+                                            </Link>
+                                        )}
+                                        {order.status === "paid" && (
+                                            <div>
+                                                <p>
+                                                    <span className="text-success">
+                                                        Paid
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        )}
+                                    </td>
+                                    <td>
+                                        {order.status === "paid" && (
+                                            <p>Shipped</p>
+                                        )}
+                                        {order.status !== "paid" && (
+                                            <p>Pending Approval</p>
+                                        )}
+
+                                        {order.price && !order.paid && (
+                                            <p>Not Paid yet</p>
+                                        )}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

@@ -5,7 +5,7 @@ import wheel from "../../assets/images/wheel.png";
 
 const DoubleBanner = () => {
     return (
-        <div className="flex justify-evenly p-20 gap-8 flex-col md:flex-row lg:flex-row">
+        <div className="flex justify-evenly p-20 gap-8 flex-col md:flex-row lg:flex-row ">
             <div className="card lg:card-side bg-base-100 shadow-xl bg-neutral">
                 <div className="card-body">
                     <h2 className="card-title font-bold ">Engine Auto Part</h2>

@@ -27,7 +27,7 @@ const Dashboard = () => {
                         <Link to="/dashboard/myOrders">My Order</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/review">Sidebar Item 2</Link>
+                        <Link to="/dashboard/review">Add Review</Link>
                     </li>
                     {admin && (
                         <>
@@ -38,6 +38,9 @@ const Dashboard = () => {
                                 <Link to="/dashboard/addProduct">
                                     Add Product
                                 </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/orders">Orders</Link>
                             </li>
                             <li>
                                 <Link to="/dashboard/manage">

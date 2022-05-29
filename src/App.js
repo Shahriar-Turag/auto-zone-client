@@ -19,6 +19,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Payment from "./Pages/Dashboard/Payment";
 import Footer from "./Pages/Shared/Footer";
+import Orders from "./Pages/Dashboard/Orders";
 
 function App() {
     return (
@@ -63,6 +64,14 @@ function App() {
                         }
                     ></Route>
                     <Route
+                        path="orders"
+                        element={
+                            <RequireAdmin>
+                                <Orders />
+                            </RequireAdmin>
+                        }
+                    ></Route>
+                    <Route
                         path="manage"
                         element={
                             <RequireAdmin>
@@ -75,8 +84,8 @@ function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
             </Routes>
-            <Footer />
             <ToastContainer></ToastContainer>;
+            <Footer />
         </div>
     );
 }

@@ -9,7 +9,7 @@ import ct6 from "../../assets/images/ct6.png";
 
 const Categories = () => {
     return (
-        <div className="m-20">
+        <div className="lg:m-20 m-10">
             <div className="flex justify-between pb-20 flex-col lg:flex-row">
                 <h2 className="text-4xl font-bold py-5 lg:py-0">
                     Top Categories
