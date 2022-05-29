@@ -2,6 +2,7 @@ import React from "react";
 import AddReview from "../Dashboard/AddReview";
 
 import Banner from "./Banner";
+import BusinessSum from "./BusinessSum";
 import Categories from "./Categories";
 import DoubleBanner from "./DoubleBanner";
 import FourthBanner from "./FourthBanner";
@@ -21,6 +22,7 @@ const Home = () => {
             <Categories />
             <FourthBanner />
             <Reviews />
+            <BusinessSum />
         </div>
     );
 };

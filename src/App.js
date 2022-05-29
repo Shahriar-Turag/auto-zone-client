@@ -26,6 +26,7 @@ import AllOrderList from "./Pages/Dashboard/AllOrderList";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./firebase.init";
 import useAdmin from "./hooks/useAdmin";
+import NotFound from "./Pages/Shared/NotFound";
 
 function App() {
     const [user] = useAuthState(auth);
@@ -102,6 +103,7 @@ function App() {
                 <Route path="/shop" element={<Products />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
+                <Route path="/*" element={<NotFound />}></Route>
             </Routes>
             <ToastContainer></ToastContainer>
             <Footer />

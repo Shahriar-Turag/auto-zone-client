@@ -6,10 +6,9 @@ const Footer = () => {
             <footer class="footer p-10 bg-secondary text-white">
                 <div>
                     <span class="footer-title">Services</span>
-                    <a class="link link-hover">Branding</a>
-                    <a class="link link-hover">Design</a>
-                    <a class="link link-hover">Marketing</a>
-                    <a class="link link-hover">Advertisement</a>
+                    <a class="link link-hover">Parts</a>
+                    <a class="link link-hover">Manufacturer</a>
+                    <a class="link link-hover">Shipping</a>
                 </div>
                 <div>
                     <span class="footer-title">Company</span>
@@ -23,6 +22,26 @@ const Footer = () => {
                     <a class="link link-hover">Terms of use</a>
                     <a class="link link-hover">Privacy policy</a>
                     <a class="link link-hover">Cookie policy</a>
+                </div>
+                <div>
+                    <span class="footer-title">Newsletter</span>
+                    <div class="form-control w-80">
+                        <label class="label">
+                            <span class="label-text text-white">
+                                Enter your email address
+                            </span>
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="text"
+                                placeholder="username@site.com"
+                                class="input input-bordered w-full pr-16"
+                            />
+                            <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </footer>
             <footer class="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">

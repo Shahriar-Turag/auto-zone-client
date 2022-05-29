@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Shared/Loading";
 import Review from "./Review";
 
 const Reviews = () => {
@@ -16,20 +17,11 @@ const Reviews = () => {
     }, []);
 
     if (loading) {
-        return (
-            <div className="page text-center">
-                <div
-                    className="spinner-grow text-primary m-5 text-center"
-                    role="status"
-                >
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        );
+        return <Loading />;
     }
 
     return (
-        <div className=" my-20">
+        <div className=" my-10">
             <h1 className="font-bold text-3xl ml-20 my-5">
                 Our customers reviews
             </h1>

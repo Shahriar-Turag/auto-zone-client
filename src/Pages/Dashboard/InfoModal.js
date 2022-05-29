@@ -81,6 +81,39 @@ const InfoModal = () => {
                                 className="input input-bordered input-warning w-full "
                             />
                         </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">LinkedIn</span>
+                            </label>
+                            <input
+                                {...register("linkedin")}
+                                type="text"
+                                placeholder="LinkedIn URL"
+                                className="input input-bordered input-warning w-full "
+                            />
+                        </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Facebook</span>
+                            </label>
+                            <input
+                                {...register("facebook")}
+                                type="text"
+                                placeholder="facebook URL"
+                                className="input input-bordered input-warning w-full "
+                            />
+                        </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Git hub</span>
+                            </label>
+                            <input
+                                {...register("github")}
+                                type="text"
+                                placeholder="Git hub URL"
+                                className="input input-bordered input-warning w-full "
+                            />
+                        </div>
 
                         <div className="modal-action justify-evenly">
                             <label

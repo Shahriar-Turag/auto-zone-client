@@ -19,7 +19,7 @@ const Categories = () => {
                 </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-accent">
                     <div className="card-body space-y-5">
                         <h2 className="card-title text-3xl text-white">
                             Tires
@@ -37,7 +37,7 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-accent">
                     <div className="card-body space-y-5">
                         <h2 className="card-title text-3xl text-white">
                             Service Kits
@@ -55,7 +55,7 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-accent">
                     <div className="card-body space-y-5">
                         <h2 className="card-title text-3xl text-white">
                             Steering Wheel
@@ -73,14 +73,16 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-neutral">
                     <div className="card-body space-y-5">
-                        <h2 className="card-title text-3xl text-white">
+                        <h2 className="card-title text-3xl text-black">
                             Brake Parts
                         </h2>
 
                         <div className="card-actions">
-                            <button className="btn btn-base">MORE</button>
+                            <button className="btn btn-base-100 btn-accent">
+                                MORE
+                            </button>
                         </div>
                     </div>
                     <figure>
@@ -91,14 +93,16 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-neutral">
                     <div className="card-body space-y-5">
-                        <h2 className="card-title text-3xl text-white">
+                        <h2 className="card-title text-3xl text-black">
                             Batteries
                         </h2>
 
                         <div className="card-actions">
-                            <button className="btn btn-base">MORE</button>
+                            <button className="btn btn-base-100 btn-accent">
+                                MORE
+                            </button>
                         </div>
                     </div>
                     <figure>
@@ -109,14 +113,16 @@ const Categories = () => {
                         />
                     </figure>
                 </div>
-                <div className="card lg:card-side bg-gradient-to-r from-secondary to-primary shadow-xl">
+                <div className="card lg:card-side bg-base-100 bg-neutral">
                     <div className="card-body space-y-5">
-                        <h2 className="card-title text-3xl text-white">
+                        <h2 className="card-title text-3xl text-black">
                             Oils and Fluids
                         </h2>
 
                         <div className="card-actions">
-                            <button className="btn btn-base">MORE</button>
+                            <button className="btn btn-base-100 btn-accent">
+                                MORE
+                            </button>
                         </div>
                     </div>
                     <figure>
