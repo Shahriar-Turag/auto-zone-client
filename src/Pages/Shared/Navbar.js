@@ -101,7 +101,7 @@ const Navbar = () => {
                 )}
 
                 <div className="navbar-center">
-                    {location.pathname === "/dashboard" ? (
+                    {location.pathname.includes("/dashboard") ? (
                         <h1 className="font-bold text-2xl">Dashboard</h1>
                     ) : (
                         <Link
@@ -114,12 +114,19 @@ const Navbar = () => {
                         </Link>
                     )}
                 </div>
+
                 <div className="navbar-end">
-                    <ul className="hidden lg:block ">
+                    <ul
+                        className={
+                            location.pathname.includes("/dashboard")
+                                ? " lg:hidden"
+                                : "block"
+                        }
+                    >
                         <li>
                             {user ? (
                                 <button
-                                    className="btn btn-link"
+                                    className="btn btn-link hidden lg:block"
                                     onClick={logout}
                                 >
                                     Sign Out
@@ -129,21 +136,40 @@ const Navbar = () => {
                             )}
                         </li>
                     </ul>
-                    <div
-                        className={
-                            user
-                                ? "avatar online ml-4 hidden lg:block"
-                                : "avatar online ml-4 hidden"
-                        }
-                    >
-                        {user ? (
-                            <div className="w-10 rounded-full ">
-                                <img src={user?.photoURL} alt="" />
-                            </div>
-                        ) : (
-                            <p className="hidden lg:hidden"></p>
-                        )}
-                    </div>
+                    {location.pathname.includes("/dashboard") ? (
+                        <div
+                            className={
+                                user
+                                    ? "avatar online ml-4 hidden lg:block"
+                                    : "avatar online ml-4 hidden"
+                            }
+                            style={{ display: "none" }}
+                        >
+                            {user ? (
+                                <div className="w-10 rounded-full ">
+                                    <img src={user?.photoURL} alt="" />
+                                </div>
+                            ) : (
+                                <p className="hidden lg:hidden"></p>
+                            )}
+                        </div>
+                    ) : (
+                        <div
+                            className={
+                                user
+                                    ? "avatar online ml-4 hidden lg:block"
+                                    : "avatar online ml-4 hidden"
+                            }
+                        >
+                            {user ? (
+                                <div className="w-10 rounded-full ">
+                                    <img src={user?.photoURL} alt="" />
+                                </div>
+                            ) : (
+                                <p className="hidden lg:hidden"></p>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

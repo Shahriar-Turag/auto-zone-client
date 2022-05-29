@@ -19,7 +19,10 @@ const ManageProducts = () => {
         return <Loading />;
     }
     return (
-        <div>
+        <div className="p-10">
+            <h1 className="text-center font-bold text-2xl p-10">
+                Manage your products
+            </h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>

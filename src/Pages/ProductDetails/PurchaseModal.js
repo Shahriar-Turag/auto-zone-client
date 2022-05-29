@@ -20,6 +20,8 @@ const PurchaseModal = ({ product, update }) => {
         data.price = parseInt(product.price * quantityRef.current.value);
         data.category = product.category;
         data.details = product.description;
+        data.phone = product.phone;
+        data.address = product.address;
         data.status = "Pending";
 
         axios
@@ -160,6 +162,7 @@ const PurchaseModal = ({ product, update }) => {
                             <input
                                 {...register("address")}
                                 type="text"
+                                value={product.address}
                                 placeholder="Address"
                                 className="input input-bordered input-warning w-full "
                             />
@@ -171,6 +174,7 @@ const PurchaseModal = ({ product, update }) => {
                             <input
                                 {...register(" phone")}
                                 type="text"
+                                value={product.phone}
                                 placeholder="Phone"
                                 className="input input-bordered input-warning w-full "
                             />

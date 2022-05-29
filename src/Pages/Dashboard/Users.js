@@ -20,8 +20,10 @@ const Users = () => {
         return <Loading />;
     }
     return (
-        <div>
-            <h2 className="text-2xl">All users: {users.length}</h2>
+        <div className="p-10">
+            <h2 className="text-2xl text-center font-bold p-10">
+                All users: {users.length}
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

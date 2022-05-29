@@ -39,7 +39,7 @@ const Orders = () => {
                 });
         }
     };
-    const handleApprove = (id, index) => {
+    const handleApprove = (id, index, refetch) => {
         const warning = window.confirm("Ship This Boat..!?");
 
         if (warning) {
@@ -53,6 +53,7 @@ const Orders = () => {
                 .then((data) => {
                     if (data.modifiedCount > 0) {
                         alert("Product Shipped...!!!");
+                        refetch();
                         setStatus(false);
                     }
                 });

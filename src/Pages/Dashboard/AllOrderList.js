@@ -1,43 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import auth from "../../firebase.init";
+import { Link } from "react-router-dom";
 
-const OrderTable = () => {
-    const [myOrders, setMyOrders] = useState([]);
-    const [user] = useAuthState(auth);
+const AllOrderList = () => {
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        if (user) {
-            fetch(
-                `https://limitless-thicket-02169.herokuapp.com/orders?email=${user.email}`,
-                {
-                    method: "GET",
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem(
-                            "accessToken"
-                        )}`,
-                    },
-                }
-            )
-                .then((res) => {
-                    console.log("res", res);
-                    return res.json();
-                })
-                .then((data) => {
-                    if (data) {
-                        setMyOrders(data);
-                        console.log(data);
-                    }
-                });
-        }
-    }, [user]);
-
+        fetch("https://limitless-thicket-02169.herokuapp.com/allOrders", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setOrders(data);
+            });
+    }, []);
     return (
         <div className="p-10">
             <div>
                 <h2 className="font-bold text-2xl py-5 text-center">
-                    My Orders: {myOrders.length}
+                    My Orders: {orders.length}
                 </h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
@@ -53,7 +37,7 @@ const OrderTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {myOrders.map((order, index) => (
+                            {orders.map((order, index) => (
                                 <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>{order.name}</td>
@@ -101,4 +85,4 @@ const OrderTable = () => {
     );
 };
 
-export default OrderTable;
+export default AllOrderList;

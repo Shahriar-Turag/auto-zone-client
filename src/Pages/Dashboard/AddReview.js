@@ -15,8 +15,11 @@ const AddReview = () => {
             });
     };
     return (
-        <div>
-            <div class="card w-full bg-base-100 shadow-xl">
+        <div className="flex justify-center items-center p-10 lg:p-20">
+            <div class="card w-96  bg-base-100 shadow-xl ">
+                <h1 className="text-center pt-8 text-2xl font-bold">
+                    Add a Review{" "}
+                </h1>
                 <div class="card-body">
                     <form
                         onSubmit={handleSubmit(onSubmit)}
@@ -30,6 +33,7 @@ const AddReview = () => {
                             required
                             className="input input-bordered input-warning w-full max-w-xs"
                         />
+                        <br />
                         <input
                             type="number"
                             {...register("rating", { min: 0, max: 5 })}
@@ -37,12 +41,14 @@ const AddReview = () => {
                             required
                             className="input input-bordered input-warning w-full max-w-xs"
                         />
+                        <br />
                         <textarea
                             {...register("details")}
                             placeholder="Review Details"
                             required
                             className="input input-bordered input-warning w-full max-w-xs"
                         />
+                        <br />
                         <input
                             className="btn btn-secondary"
                             type="submit"
