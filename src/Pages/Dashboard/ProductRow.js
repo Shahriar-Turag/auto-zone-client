@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductRow = ({ product, index, refetch }) => {
-    const { img, name, category, availableQty, price } = product;
+    const { register, handleSubmit, reset } = useForm();
+    const { img, name, category, availableQty, price, _id } = product;
+    const [quantity, setQuantity] = useState({});
+
+    const quantityRef = useRef(null);
 
     const handleDelete = (id) => {
         fetch(`https://limitless-thicket-02169.herokuapp.com/products/${id}`, {
@@ -15,6 +22,31 @@ const ProductRow = ({ product, index, refetch }) => {
                 console.log(data);
                 if (data.deletedCount) {
                     refetch();
+                }
+            });
+    };
+
+    const onSubmit = (data) => {
+        const updatedQuantity = parseInt(data.qty) + parseInt(availableQty);
+        const newQuantity = { updatedQuantity };
+        console.log(newQuantity);
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newQuantity),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    const updatedAvailableQuantity = {
+                        ...quantity,
+                        quantity: updatedQuantity,
+                    };
+                    setQuantity(updatedAvailableQuantity);
+                    reset();
+                    toast("Restocked Successfully", { type: "success" });
                 }
             });
     };
@@ -41,69 +73,115 @@ const ProductRow = ({ product, index, refetch }) => {
 
             <td>{availableQty}</td>
             <td>{price}</td>
-            <th>
-                <label for="my-modal-6" className="btn modal-button">
-                    open modal
-                </label>
-
-                <input
-                    type="checkbox"
-                    id="my-modal-6"
-                    className="modal-toggle"
-                />
-                <div className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">
-                            Congratulations random Interner user!
-                        </h3>
-                        <p className="py-4">
-                            You've been selected for a chance to get one year of
-                            subscription to use Wikipedia for free!
-                        </p>
-                        <div className="modal-action">
-                            <label for="my-modal-6" className="btn">
-                                Yay!
+            <td>
+                <div className="flex space-x-4">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="card-actions justify-end">
+                            <label
+                                htmlFor="my-modal-6"
+                                className="btn btn-xs btn-accent"
+                            >
+                                Update
                             </label>
+
+                            <input
+                                type="checkbox"
+                                id="my-modal-6"
+                                className="modal-toggle"
+                            />
+                            <div className="modal modal-bottom sm:modal-middle">
+                                <div className="modal-box px-10 pt-14">
+                                    <div>
+                                        <h1 className="text-center font-bold text-3xl uppercase pb-5">
+                                            Update
+                                        </h1>
+                                    </div>
+
+                                    <div>
+                                        <label className="label">
+                                            <span className="label-text">
+                                                Quantity
+                                            </span>
+                                        </label>
+                                        <input
+                                            ref={quantityRef}
+                                            {...register("qty")}
+                                            type="number"
+                                            placeholder="Quantity"
+                                            min={0}
+                                            className="input input-bordered input-warning w-full "
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="label">
+                                            <span className="label-text">
+                                                Price
+                                            </span>
+                                        </label>
+                                        <input
+                                            {...register("price")}
+                                            type="number"
+                                            placeholder="Price"
+                                            className="input input-bordered input-warning w-full"
+                                        />
+                                    </div>
+
+                                    <div className="modal-action justify-evenly">
+                                        <label
+                                            htmlFor="my-modal-6"
+                                            className="btn btn-sm btn-circle absolute right-2 top-2"
+                                        >
+                                            ✕
+                                        </label>
+                                        <input
+                                            type="submit"
+                                            value="Update"
+                                            className="btn btn-secondary w-full max-w-xs"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                {/* <button
+                    </form>
+                    {/* <button
                     onClick={() => handleDelete(product._id)}
                     className="btn btn-ghost btn-xs"
                 >
                     Delete
                 </button> */}
 
-                <label
-                    for={`id${product._id}`}
-                    className="btn btn-xs modal-button bg-error text-white "
-                >
-                    Delete
-                </label>
+                    <label
+                        for={`id${product._id}`}
+                        className="btn btn-xs modal-button bg-error text-white "
+                    >
+                        Delete
+                    </label>
 
-                <input
-                    type="checkbox"
-                    id={`id${product._id}`}
-                    className="modal-toggle"
-                />
-                <div className="modal">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">
-                            Are you sure you want to delete this {product.name}
-                        </h3>
+                    <input
+                        type="checkbox"
+                        id={`id${product._id}`}
+                        className="modal-toggle"
+                    />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">
+                                Are you sure you want to delete this{" "}
+                                {product.name}
+                            </h3>
 
-                        <div className="modal-action">
-                            <label
-                                onClick={() => handleDelete(product._id)}
-                                for={`id${product._id}`}
-                                className="btn"
-                            >
-                                Yes
-                            </label>
+                            <div className="modal-action">
+                                <label
+                                    onClick={() => handleDelete(product._id)}
+                                    for={`id${product._id}`}
+                                    className="btn"
+                                >
+                                    Yes
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </th>
+            </td>
         </tr>
     );
 };

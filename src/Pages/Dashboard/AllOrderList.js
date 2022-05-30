@@ -46,13 +46,6 @@ const AllOrderList = () => {
                                     <td>${order.price}</td>
 
                                     <td>
-                                        {order.price && !order.paid && (
-                                            <Link to={`/dashboard/myOrders`}>
-                                                <button className="btn btn-xs btn-success">
-                                                    Pay Now
-                                                </button>
-                                            </Link>
-                                        )}
                                         {order.status === "paid" && (
                                             <div>
                                                 <p>

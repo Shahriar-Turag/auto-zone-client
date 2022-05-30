@@ -19,7 +19,7 @@ const ManageProducts = () => {
         return <Loading />;
     }
     return (
-        <div className="p-10">
+        <div className="p-10 mb-10">
             <h1 className="text-center font-bold text-2xl p-10">
                 Manage your products
             </h1>
@@ -32,7 +32,7 @@ const ManageProducts = () => {
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Price per unit</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

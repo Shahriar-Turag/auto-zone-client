@@ -26,7 +26,7 @@ const Payment = () => {
         return <Loading />;
     }
     return (
-        <div>
+        <div className="flex justify-center items-center">
             <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
                 <div className="card-body">
                     <h2 className="text-primary font-bold text-2xl">
