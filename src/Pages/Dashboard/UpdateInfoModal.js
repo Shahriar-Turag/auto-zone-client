@@ -1,27 +1,78 @@
-import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
-const InfoModal = () => {
+const UpdateInfoModal = () => {
     const { register, handleSubmit, reset } = useForm();
+    const [lives, setLives] = useState([]);
+    const [study, setStudy] = useState([]);
+    const [phn, setPhn] = useState([]);
+    const [linked, setLinked] = useState([]);
+    const [fb, setFb] = useState([]);
+    const [git, setGit] = useState([]);
     const [user] = useAuthState(auth);
 
     const onSubmit = (data) => {
-        axios
-            .post("https://limitless-thicket-02169.herokuapp.com/info", data)
-            .then((res) => {
-                if (res.data.insertedId) {
-                    alert("Info added successfully");
+        const updatedLivesIn = data.livesIn;
+        const updatedStudyIn = data.studyIn;
+        const updatedPhone = data.phone;
+        const updatedFacebook = data.facebook;
+        const updatedLinkedIn = data.linkedIn;
+        const updatedGithub = data.github;
+
+        const bodyData = {
+            updatedLivesIn,
+            updatedStudyIn,
+            updatedPhone,
+            updatedFacebook,
+            updatedLinkedIn,
+            updatedGithub,
+        };
+        fetch(
+            `https://limitless-thicket-02169.herokuapp.com/info?email=${user.email}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(bodyData),
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    const {
+                        updatedNLivesIn,
+                        updatedNStudyIn,
+                        updatedNPhone,
+                        updatedNFacebook,
+                        updatedNLinkedIn,
+                        updatedNGithub,
+                    } = {
+                        ...lives,
+                        ...study,
+                        ...phn,
+                        ...linked,
+                        ...fb,
+                        ...git,
+                    };
+                    setLives(updatedNLivesIn);
+                    setStudy(updatedNStudyIn);
+                    setPhn(updatedNPhone);
+                    setLinked(updatedNLinkedIn);
+                    setFb(updatedNFacebook);
+                    setGit(updatedNGithub);
                     reset();
+                    toast("Updated Successfully", { type: "success" });
                 }
             });
     };
     return (
         <div>
             <label htmlFor="my-modal-6" className="btn btn-primary">
-                Add Info
+                Update
             </label>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="card-actions justify-end">
@@ -34,7 +85,7 @@ const InfoModal = () => {
                         <div className="modal-box px-10 pt-14">
                             <div>
                                 <h1 className="text-center font-bold text-3xl uppercase pb-5">
-                                    ADD Info
+                                    Update Info
                                 </h1>
                             </div>
 
@@ -130,7 +181,7 @@ const InfoModal = () => {
                                 </label>
                                 <input
                                     type="submit"
-                                    value="Add"
+                                    value="Update"
                                     className="btn btn-secondary w-full max-w-xs"
                                 />
                             </div>
@@ -142,4 +193,4 @@ const InfoModal = () => {
     );
 };
 
-export default InfoModal;
+export default UpdateInfoModal;

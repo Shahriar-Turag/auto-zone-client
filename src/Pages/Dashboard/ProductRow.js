@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 const ProductRow = ({ product, index, refetch }) => {
     const { register, handleSubmit, reset } = useForm();
     const { img, name, category, availableQty, price, _id } = product;
     const [quantity, setQuantity] = useState({});
+    const [newPrc, setNewPrc] = useState({});
 
-    const quantityRef = useRef(null);
+    const { quantityRef, priceRef } = useRef(null);
 
     const handleDelete = (id) => {
         fetch(`https://limitless-thicket-02169.herokuapp.com/products/${id}`, {
@@ -28,23 +29,31 @@ const ProductRow = ({ product, index, refetch }) => {
 
     const onSubmit = (data) => {
         const updatedQuantity = parseInt(data.qty) + parseInt(availableQty);
-        const newQuantity = { updatedQuantity };
-        console.log(newQuantity);
-        fetch(`http://localhost:5000/products/${_id}`, {
+
+        const updatedPrice = parseInt(data.prc);
+        const bodyData = {
+            updatedQuantity,
+            updatedPrice,
+        };
+
+        fetch(`https://limitless-thicket-02169.herokuapp.com/products/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newQuantity),
+            body: JSON.stringify(bodyData),
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount > 0) {
-                    const updatedAvailableQuantity = {
+                    const { updatedAvailableQuantity, updatedPrc } = {
                         ...quantity,
+                        ...newPrc,
                         quantity: updatedQuantity,
+                        newPrc: updatedPrice,
                     };
                     setQuantity(updatedAvailableQuantity);
+                    setNewPrc(updatedPrc);
                     reset();
                     toast("Restocked Successfully", { type: "success" });
                 }
@@ -119,7 +128,8 @@ const ProductRow = ({ product, index, refetch }) => {
                                             </span>
                                         </label>
                                         <input
-                                            {...register("price")}
+                                            ref={priceRef}
+                                            {...register("prc")}
                                             type="number"
                                             placeholder="Price"
                                             className="input input-bordered input-warning w-full"
