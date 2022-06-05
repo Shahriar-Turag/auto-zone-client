@@ -4,14 +4,14 @@ import shipping from "../../assets/Icons/shipping.png";
 const BusinessSum = () => {
     return (
         <div className="flex justify-center items-center p-10 lg:p-20">
-            <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
-                <div class="stat">
-                    <div class="stat-figure text-primary">
+            <div className="stats stats-vertical lg:stats-horizontal shadow w-full">
+                <div className="stat">
+                    <div className="stat-figure text-primary">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            class="inline-block w-8 h-8 stroke-current"
+                            className="inline-block w-8 h-8 stroke-current"
                         >
                             <path
                                 stroke-linecap="round"
@@ -21,18 +21,18 @@ const BusinessSum = () => {
                             ></path>
                         </svg>
                     </div>
-                    <div class="stat-title">Total Purchases</div>
-                    <div class="stat-value text-primary">25.6K</div>
-                    <div class="stat-desc">21% more than last month</div>
+                    <div className="stat-title">Total Purchases</div>
+                    <div className="stat-value text-primary">25.6K</div>
+                    <div className="stat-desc">21% more than last month</div>
                 </div>
 
-                <div class="stat">
-                    <div class="stat-figure text-secondary">
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            class="inline-block w-8 h-8 stroke-current"
+                            className="inline-block w-8 h-8 stroke-current"
                         >
                             <path
                                 stroke-linecap="round"
@@ -42,22 +42,22 @@ const BusinessSum = () => {
                             ></path>
                         </svg>
                     </div>
-                    <div class="stat-title">Page Views</div>
-                    <div class="stat-value text-secondary">2.6M</div>
-                    <div class="stat-desc">21% more than last month</div>
+                    <div className="stat-title">Page Views</div>
+                    <div className="stat-value text-secondary">2.6M</div>
+                    <div className="stat-desc">21% more than last month</div>
                 </div>
 
-                <div class="stat">
-                    <div class="stat-figure text-secondary">
-                        <div class="avatar">
-                            <div class="w-16 rounded-full">
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <div className="avatar">
+                            <div className="w-16 rounded-full">
                                 <img src={shipping} alt="" />
                             </div>
                         </div>
                     </div>
-                    <div class="stat-value">86%</div>
-                    <div class="stat-title">Shipping done</div>
-                    <div class="stat-desc text-secondary">
+                    <div className="stat-value">86%</div>
+                    <div className="stat-title">Shipping done</div>
+                    <div className="stat-desc text-secondary">
                         31 shipping remaining
                     </div>
                 </div>

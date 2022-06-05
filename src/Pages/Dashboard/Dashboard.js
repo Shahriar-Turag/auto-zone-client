@@ -21,7 +21,7 @@ const Dashboard = () => {
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side ">
-                <label for="my-drawer-2" className="drawer-overlay"></label>
+                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80  text-base-content bg-gray-200">
                     {admin ? (
                         <>

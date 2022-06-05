@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 
 const ProductRow = ({ product, index, refetch }) => {
     const { register, handleSubmit, reset } = useForm();
-    const { img, name, category, availableQty, price, _id } = product;
+
     const [quantity, setQuantity] = useState({});
     const [newPrc, setNewPrc] = useState({});
+    const [myProduct, setMyProduct] = useState(product);
+    let { img, name, category, availableQty, price, _id } = myProduct;
 
     const { quantityRef, priceRef } = useRef(null);
 
@@ -35,6 +37,7 @@ const ProductRow = ({ product, index, refetch }) => {
             updatedQuantity,
             updatedPrice,
         };
+        console.log(name);
 
         fetch(`https://limitless-thicket-02169.herokuapp.com/products/${_id}`, {
             method: "PUT",
@@ -54,6 +57,12 @@ const ProductRow = ({ product, index, refetch }) => {
                     };
                     setQuantity(updatedAvailableQuantity);
                     setNewPrc(updatedPrc);
+                    const updatedProduct = {
+                        ...myProduct,
+                        availableQty: updatedQuantity,
+                        price: updatedPrice,
+                    };
+                    setMyProduct(updatedProduct);
                     reset();
                     toast("Restocked Successfully", { type: "success" });
                 }
@@ -75,7 +84,7 @@ const ProductRow = ({ product, index, refetch }) => {
                 </div>
             </td>
             <td>
-                {name.slice(0, 20)}
+                {typeof name === "string" ? name.slice(0, 20) : name}
                 <br />
                 <span className="badge badge-ghost badge-sm">{category}</span>
             </td>
@@ -87,7 +96,7 @@ const ProductRow = ({ product, index, refetch }) => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="card-actions justify-end">
                             <label
-                                htmlFor="my-modal-6"
+                                htmlFor={`id-${_id}`}
                                 className="btn btn-xs btn-accent"
                             >
                                 Update
@@ -95,7 +104,7 @@ const ProductRow = ({ product, index, refetch }) => {
 
                             <input
                                 type="checkbox"
-                                id="my-modal-6"
+                                id={`id-${_id}`}
                                 className="modal-toggle"
                             />
                             <div className="modal modal-bottom sm:modal-middle">
@@ -161,7 +170,7 @@ const ProductRow = ({ product, index, refetch }) => {
                 </button> */}
 
                     <label
-                        for={`id${product._id}`}
+                        htmlFor={`id${product._id}`}
                         className="btn btn-xs modal-button bg-error text-white "
                     >
                         Delete
@@ -182,7 +191,7 @@ const ProductRow = ({ product, index, refetch }) => {
                             <div className="modal-action">
                                 <label
                                     onClick={() => handleDelete(product._id)}
-                                    for={`id${product._id}`}
+                                    htmlFor={`id${product._id}`}
                                     className="btn"
                                 >
                                     Yes

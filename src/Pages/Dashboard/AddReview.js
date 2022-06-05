@@ -16,11 +16,11 @@ const AddReview = () => {
     };
     return (
         <div className="flex justify-center items-center p-10 lg:p-20">
-            <div class="card w-96  bg-base-100 shadow-xl ">
+            <div className="card w-96  bg-base-100 shadow-xl ">
                 <h1 className="text-center pt-8 text-2xl font-bold">
                     Add a Review{" "}
                 </h1>
-                <div class="card-body">
+                <div className="card-body">
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="space-y-5"

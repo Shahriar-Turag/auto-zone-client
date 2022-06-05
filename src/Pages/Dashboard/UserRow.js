@@ -50,7 +50,7 @@ const UserRow = ({ user, refetch, index }) => {
                 {role !== "admin" && (
                     <label
                         onClick={makeAdmin}
-                        for="my-modal-6"
+                        htmlFor="my-modal-6"
                         className="btn modal-button"
                     >
                         Make Admin
@@ -69,7 +69,7 @@ const UserRow = ({ user, refetch, index }) => {
                             subscription to use Wikipedia for free!
                         </p>
                         <div className="modal-action">
-                            <label for="my-modal-6" className="btn">
+                            <label htmlFor="my-modal-6" className="btn">
                                 Yay!
                             </label>
                         </div>

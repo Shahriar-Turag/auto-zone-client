@@ -23,7 +23,7 @@ const Navbar = () => {
                 {location.pathname.includes("/dashboard") ? (
                     <div className=" navbar-start  block lg:hidden">
                         <label
-                            for="my-drawer-2"
+                            htmlFor="my-drawer-2"
                             tabIndex="0"
                             className="btn-ghost  "
                         >

@@ -34,12 +34,12 @@ const MyProfile = () => {
     }, [user]);
 
     return (
-        <div class="hero min-h-screen bg-base-100">
-            <div class="hero-content text-center">
-                <div class="max-w-md border rounded-xl">
+        <div className="hero min-h-screen bg-base-100">
+            <div className="hero-content text-center">
+                <div className="max-w-md border rounded-xl">
                     <div className=" pt-8">
-                        <div class="avatar">
-                            <div class="w-24 mask mask-hexagon ">
+                        <div className="avatar">
+                            <div className="w-24 mask mask-hexagon ">
                                 <img src={user?.photoURL} alt="" />
                             </div>
                         </div>
@@ -69,33 +69,33 @@ const MyProfile = () => {
                             </a>
                         </div>
                     </div>
-                    <div class="card w-[99%] lg:w-96 bg-base-100 shadow-xl">
+                    <div className="card w-[99%] lg:w-96 bg-base-100 shadow-xl">
                         {myInfo.length === 0 ? (
                             <>
                                 <InfoModal />
                             </>
                         ) : (
                             myInfo.map((info) => (
-                                <div key={info._id} class="card-body">
-                                    <h2 class="text-left text-2xl font-bold">
+                                <div key={info._id} className="card-body">
+                                    <h2 className="text-left text-2xl font-bold">
                                         More info
                                     </h2>
                                     <div className="text-left font-bold space-y-3">
                                         <p>
-                                            <i class="fas fa-graduation-cap"></i>{" "}
+                                            <i className="fas fa-graduation-cap"></i>{" "}
                                             Studied at &nbsp;{info.studyIn}
                                         </p>
                                         <p>
-                                            <i class="fas fa-home"></i>
+                                            <i className="fas fa-home"></i>
                                             &nbsp;Lives in {info.livesIn}{" "}
                                         </p>
                                         <p>
                                             {" "}
-                                            <i class="fas fa-phone"></i>
+                                            <i className="fas fa-phone"></i>
                                             &nbsp;Phone: {info.phone}{" "}
                                         </p>
                                     </div>
-                                    <div class="card-actions justify-end">
+                                    <div className="card-actions justify-end">
                                         <UpdateInfoModal />
                                     </div>
                                 </div>

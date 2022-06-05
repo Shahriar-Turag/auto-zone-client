@@ -89,15 +89,15 @@ const Banner = () => {
                 </div>
             </div>
             <div
-                class="hero min-h-screen small-daddy"
+                className="hero min-h-screen small-daddy"
                 style={{
                     background: `url(${bgBanner})`,
                 }}
             >
-                <div class="hero"></div>
-                <div class="hero-content text-center text-neutral-content">
-                    <div class="hero-content flex-col lg:flex-row-reverse">
-                        <img src={banner1} class="w-[90%]" alt="" />
+                <div className="hero"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="hero-content flex-col lg:flex-row-reverse">
+                        <img src={banner1} className="w-[90%]" alt="" />
                         <div>
                             <h1 className="text-3xl font-bold pb-9">
                                 Aftermarket <br />

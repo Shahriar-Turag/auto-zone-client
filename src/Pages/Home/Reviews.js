@@ -26,7 +26,7 @@ const Reviews = () => {
                 Our customers reviews
             </h1>
             <div className="flex justify-center items-center">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-3 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-3 ">
                     {reviews.length > 3
                         ? reviews
                               .slice(reviews.length - 3, reviews.length)
