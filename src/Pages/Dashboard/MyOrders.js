@@ -15,7 +15,7 @@ const MyOrders = () => {
     useEffect(() => {
         if (user) {
             fetch(
-                `https://limitless-thicket-02169.herokuapp.com/orders?email=${user.email}`,
+                `http://localhost:5000/orders?email=${user.email}`,
                 {
                     method: "GET",
                     headers: {
@@ -47,7 +47,7 @@ const MyOrders = () => {
             "Are you sure\nYou want to delete this order..!?"
         );
         if (warning) {
-            const url = `https://limitless-thicket-02169.herokuapp.com/orders/${id}`;
+            const url = `http://localhost:5000/orders/${id}`;
             fetch(url, { method: "DELETE" })
                 .then((res) => res.json())
                 .then((data) => {

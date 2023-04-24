@@ -9,7 +9,7 @@ const ManageProducts = () => {
         isLoading,
         refetch,
     } = useQuery("products", () =>
-        fetch("https://limitless-thicket-02169.herokuapp.com/products", {
+        fetch("http://localhost:5000/products", {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },

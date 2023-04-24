@@ -7,7 +7,7 @@ const UserRow = ({ user, refetch, index }) => {
 
     const makeAdmin = () => {
         fetch(
-            `https://limitless-thicket-02169.herokuapp.com/user/admin/${email}`,
+            `http://localhost:5000/user/admin/${email}`,
             {
                 method: "PUT",
                 headers: {

@@ -14,7 +14,7 @@ const ProductRow = ({ product, index, refetch }) => {
     const { quantityRef, priceRef } = useRef(null);
 
     const handleDelete = (id) => {
-        fetch(`https://limitless-thicket-02169.herokuapp.com/products/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -39,7 +39,7 @@ const ProductRow = ({ product, index, refetch }) => {
         };
         console.log(name);
 
-        fetch(`https://limitless-thicket-02169.herokuapp.com/products/${_id}`, {
+        fetch(`http://localhost:5000/products/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

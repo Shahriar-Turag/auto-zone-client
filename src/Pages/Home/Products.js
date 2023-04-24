@@ -10,7 +10,7 @@ const Products = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://limitless-thicket-02169.herokuapp.com/products")
+        fetch("http://localhost:5000/products")
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -40,26 +40,26 @@ const Products = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-10 lg:px-20 pb-20">
                 {location.pathname === "/" || location.pathname === "/home "
                     ? products
-                          .slice(0, 4)
-                          .map((product) => (
-                              <Product
-                                  key={product._id}
-                                  product={product}
-                              ></Product>
-                          ))
+                        .slice(0, 4)
+                        .map((product) => (
+                            <Product
+                                key={product._id}
+                                product={product}
+                            ></Product>
+                        ))
                     : location.pathname === "/shop"
-                    ? products.map((product) => (
-                          <Product
-                              key={product._id}
-                              product={product}
-                          ></Product>
-                      ))
-                    : products.map((product) => (
-                          <Product
-                              key={product._id}
-                              product={product}
-                          ></Product>
-                      ))}
+                        ? products.map((product) => (
+                            <Product
+                                key={product._id}
+                                product={product}
+                            ></Product>
+                        ))
+                        : products.map((product) => (
+                            <Product
+                                key={product._id}
+                                product={product}
+                            ></Product>
+                        ))}
             </div>
         </div>
     );

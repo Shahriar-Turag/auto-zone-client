@@ -37,7 +37,7 @@ const AddProduct = () => {
                     };
                     axios
                         .post(
-                            "https://limitless-thicket-02169.herokuapp.com/products",
+                            "http://localhost:5000/products",
                             product,
                             {
                                 headers: {

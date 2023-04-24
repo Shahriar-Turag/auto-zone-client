@@ -8,7 +8,7 @@ const Reviews = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://limitless-thicket-02169.herokuapp.com/reviews")
+        fetch("http://localhost:5000/reviews")
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);
@@ -29,35 +29,35 @@ const Reviews = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-3 ">
                     {reviews.length > 3
                         ? reviews
-                              .slice(reviews.length - 3, reviews.length)
-                              .map((review) => (
-                                  <Review
-                                      key={review._id}
-                                      review={review}
-                                      className="flex justify-center items-center"
-                                  >
-                                      {[...Array(parseInt(review.rating))].map(
-                                          (x, index) => (
-                                              <i
-                                                  key={index}
-                                                  className="fas fa-star"
-                                              ></i>
-                                          )
-                                      )}
-                                  </Review>
-                              ))
+                            .slice(reviews.length - 3, reviews.length)
+                            .map((review) => (
+                                <Review
+                                    key={review._id}
+                                    review={review}
+                                    className="flex justify-center items-center"
+                                >
+                                    {[...Array(parseInt(review.rating))].map(
+                                        (x, index) => (
+                                            <i
+                                                key={index}
+                                                className="fas fa-star"
+                                            ></i>
+                                        )
+                                    )}
+                                </Review>
+                            ))
                         : reviews.map((review) => (
-                              <Review key={review._id} review={review}>
-                                  {[...Array(parseInt(review.rating))].map(
-                                      (x, index) => (
-                                          <i
-                                              key={index}
-                                              className="fas fa-star"
-                                          ></i>
-                                      )
-                                  )}
-                              </Review>
-                          ))}
+                            <Review key={review._id} review={review}>
+                                {[...Array(parseInt(review.rating))].map(
+                                    (x, index) => (
+                                        <i
+                                            key={index}
+                                            className="fas fa-star"
+                                        ></i>
+                                    )
+                                )}
+                            </Review>
+                        ))}
                 </div>
             </div>
         </div>

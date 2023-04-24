@@ -12,7 +12,7 @@ const ProductDetails = () => {
     useEffect(() => {
         setLoading(true);
         fetch(
-            `https://limitless-thicket-02169.herokuapp.com/products/${productId}`
+            `http://localhost:5000/products/${productId}`
         )
             .then((res) => res.json())
             .then((data) => {

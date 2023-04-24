@@ -6,7 +6,7 @@ const Orders = () => {
     const [status, setStatus] = useState(true);
 
     useEffect(() => {
-        fetch("https://limitless-thicket-02169.herokuapp.com/allOrders", {
+        fetch("http://localhost:5000/allOrders", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +26,7 @@ const Orders = () => {
         );
 
         if (warning) {
-            const url = `https://limitless-thicket-02169.herokuapp.com/orders/${id}`;
+            const url = `http://localhost:5000/orders/${id}`;
             fetch(url, { method: "DELETE" })
                 .then((res) => res.json())
                 .then((data) => {
@@ -44,7 +44,7 @@ const Orders = () => {
 
         if (warning) {
             fetch(
-                `https://limitless-thicket-02169.herokuapp.com/orders/status/${id}`,
+                `http://localhost:5000/orders/status/${id}`,
                 {
                     method: "PUT",
                 }

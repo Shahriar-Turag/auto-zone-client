@@ -15,7 +15,7 @@ const MyProfile = () => {
     useEffect(() => {
         if (user) {
             fetch(
-                `https://limitless-thicket-02169.herokuapp.com/info?email=${user.email}`,
+                `http://localhost:5000/info?email=${user.email}`,
                 {
                     method: "GET",
                 }

@@ -10,7 +10,7 @@ const InfoModal = () => {
 
     const onSubmit = (data) => {
         axios
-            .post("https://limitless-thicket-02169.herokuapp.com/info", data)
+            .post("http://localhost:5000/info", data)
             .then((res) => {
                 if (res.data.insertedId) {
                     alert("Info added successfully");

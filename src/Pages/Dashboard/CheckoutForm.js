@@ -15,7 +15,7 @@ const CheckoutForm = ({ product }) => {
 
     useEffect(() => {
         fetch(
-            "https://limitless-thicket-02169.herokuapp.com/create-payment-intent",
+            "http://localhost:5000/create-payment-intent",
             {
                 method: "POST",
                 headers: {
@@ -82,7 +82,7 @@ const CheckoutForm = ({ product }) => {
             };
 
             fetch(
-                `https://limitless-thicket-02169.herokuapp.com/orders/${_id}`,
+                `http://localhost:5000/orders/${_id}`,
                 {
                     method: "PATCH",
                     headers: {

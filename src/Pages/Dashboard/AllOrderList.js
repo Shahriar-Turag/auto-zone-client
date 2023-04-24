@@ -5,7 +5,7 @@ const AllOrderList = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch("https://limitless-thicket-02169.herokuapp.com/allOrders", {
+        fetch("http://localhost:5000/allOrders", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
